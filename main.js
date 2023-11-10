@@ -1,20 +1,19 @@
 //Declaração/criação da função tocaSomCade
-function tocaSomCade() {
-    document.querySelector('#som_tecla_cade').play();
+function tocaSom(idElementoAudio) {
+    document.querySelector(idElementoAudio).play();
 }
-//chamada ou invocação da função tocaSomCade ao clicar no botão
-document.querySelector('.tecla_cade').onclick = tocaSomCade;
 
-//Declaração/criação da função tocaSomIsso
-function tocaSomIsso() {
-    document.querySelector('#som_tecla_isso').play();
-}
-//chamada ou invocação da função tocaSomComo ao clicar no botão
-document.querySelector('.tecla_como').onclick = tocaSomComo;
-//Declaração/criação da função tocaSomComo
-function tocaSomComo() {
-    document.querySelector('#som_tecla_como').play();
-}
-//chamada ou invocação da função tocaSomComo ao clicar no botão
-document.querySelector('.tecla_como').onclick = tocaSomComo;
+//criando a referências constante listaDeTeclas e buscando a classe coletiva .tecla
+const listaDeTeclas = document.querySelectorAll('.tecla');
 
+let contador = 0;
+while(contador < listaDeTeclas.length){
+    const  teclas = listaDeTeclas[contador]
+    const efeito = teclas.classList[1];
+    const idAudio = "#som_" + efeito;
+    teclas.onclick = function(){
+        tocaSom(idAudio)
+    }
+    contador = contador + 1;
+    console.log(contador);
+}
